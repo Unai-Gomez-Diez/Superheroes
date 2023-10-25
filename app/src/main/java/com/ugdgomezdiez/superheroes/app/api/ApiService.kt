@@ -1,10 +1,10 @@
 package com.ugdgomezdiez.superheroes.app.api
 
-import com.ugdgomezdiez.superheroes.domain.HeroeModel
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeModel
 import retrofit2.Response
 import retrofit2.http.GET
 
 interface ApiService {
     @GET("heroes.json")
-    suspend fun getHeroes(): Response<HeroeModel>
+    suspend fun getHeroes(): Response<SuperHeroeModel>
 }

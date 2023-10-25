@@ -35,8 +35,9 @@ class ApiRemoteDataSource: SuperHeroeRepository {
         var apiService: ApiService = retrofit.create(ApiService::class.java)
 
         return try{
-            val response:Response<SuperHeroeModel> = apiClient.apiService.getHeroes()
+            val response:Response<List<SuperHeroeModel>> = apiClient.apiService.getHeroes()
             return if (response.isSuccessful){
+                //Listado
                 response.body()!!.toModel().right()
             }else{
                 ErrorApp.UnknowError.left()

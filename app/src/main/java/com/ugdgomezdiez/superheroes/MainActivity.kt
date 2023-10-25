@@ -7,10 +7,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel: SuperHeroeViewModel by lazy {
+        SuperHeroeViewModel(
+            ApiRemoteDataSource(
+            )
+        )
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        viewModel.loadSuperHeroe()
     }
 
 

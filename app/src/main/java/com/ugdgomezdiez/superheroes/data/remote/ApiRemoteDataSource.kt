@@ -14,11 +14,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 
-class ApiRemoteDataSource:SuperHeroeRepository {
+class ApiRemoteDataSource: SuperHeroeRepository {
     private val apiClient: ApiClient= ApiClient()
-    override suspend fun findSpuerHeroe(): Either<ErrorApp, SuperHeroe> {
+    override suspend fun findSuperHeroe(): Either<ErrorApp, SuperHeroe> {
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -36,7 +35,7 @@ class ApiRemoteDataSource:SuperHeroeRepository {
         var apiService: ApiService = retrofit.create(ApiService::class.java)
 
         return try{
-            val response:Response<SuperHeroeModel> = apiService.getHeroes()
+            val response:Response<SuperHeroeModel> = apiClient.apiService.getHeroes()
             return if (response.isSuccessful){
                 response.body()!!.toModel().right()
             }else{

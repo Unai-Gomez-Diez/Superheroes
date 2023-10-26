@@ -38,10 +38,10 @@ class ApiRemoteDataSource: SuperHeroeRepository {
             val response= apiService.getHeroes()
             return if (response.isSuccessful){
                 //Listado
-                val heroes = response.body()!!.map {
+                val heroesList = response.body()!!.map {
                     it.toModel()
                 }
-                return heroes.right()
+                return heroesList.right()
             }else{
                 ErrorApp.UnknowError.left()
             }

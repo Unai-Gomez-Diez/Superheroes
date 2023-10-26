@@ -1,4 +1,4 @@
-package com.ugdgomezdiez.superheroes.domain
+package com.ugdgomezdiez.superheroes.data.remote
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,8 +7,8 @@ class SuperHeroeModel(
     @SerializedName("name")val name:String,
     @SerializedName("slug")val slug: String? = null,
     @SerializedName("powerstats")val powerStats: PowerStats,
-    @SerializedName("appearance")val appearance:Appearance,
-    @SerializedName("images") val images:Images
+    @SerializedName("appearance")val appearance: Appearance,
+    @SerializedName("images") val images: Images
 
 ){
     class PowerStats(

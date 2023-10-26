@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ugdgomezdiez.superheroes.app.ErrorApp
 import com.ugdgomezdiez.superheroes.data.remote.BiographyRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeRemoteDataSource
+import com.ugdgomezdiez.superheroes.domain.Biography
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class SuperHeroeViewModel(private val apiRemoteDataSource: BiographyRemoteDataSo
         viewModelScope.launch(Dispatchers.IO) {
 
 
-            println(apiRemoteDataSource.findBiography(2))
+            println(apiRemoteDataSource.findBiography(1))
         }
     }
 
@@ -29,6 +30,7 @@ class SuperHeroeViewModel(private val apiRemoteDataSource: BiographyRemoteDataSo
     data class UiModel(
         val isLoading: Boolean= false,
         val errorApp: ErrorApp?=null,
-        val superHeroe: SuperHeroe?=null
+        val superHeroe: SuperHeroe?=null,
+        val biography: Biography?=null
     )
 }

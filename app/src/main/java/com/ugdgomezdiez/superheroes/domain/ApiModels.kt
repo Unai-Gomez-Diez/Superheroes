@@ -41,5 +41,10 @@ class BiographyModel(
     @SerializedName("aliases")val aliases:List<String>,
     @SerializedName("placeOfBirth")val placeOfBirth: String,
     @SerializedName("publisher")val publisher: String,
-    @SerializedName("aligment")val alignment: String
+    @SerializedName("alignment")val alignment: String
+)
+
+class WorkModel(
+    @SerializedName("occupation")val occupation: String,
+    @SerializedName("base")val base:String
 )

@@ -1,5 +1,7 @@
 package com.ugdgomezdiez.superheroes.data.remote
 
+import com.ugdgomezdiez.superheroes.domain.Biography
+import com.ugdgomezdiez.superheroes.domain.BiographyModel
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 import com.ugdgomezdiez.superheroes.domain.SuperHeroeModel
 
@@ -13,3 +15,6 @@ fun SuperHeroeModel.Appearance.toModel():SuperHeroe.Appearance=
     SuperHeroe.Appearance(this.gender,this.race,this.height,this.weight,this.eyeColor,this.hairColor)
 fun SuperHeroeModel.Images.toModel(): SuperHeroe.Images=
     SuperHeroe.Images(this.xs,this.sm,this.md,this.lg)
+
+fun BiographyModel.toModel(): Biography=
+    Biography(this.fullName,this.alterEgos,this.aliases,this.placeOfBirth,this.publisher,this.alignment)

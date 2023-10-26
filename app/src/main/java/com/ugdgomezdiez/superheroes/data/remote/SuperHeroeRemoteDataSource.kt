@@ -7,15 +7,13 @@ import com.ugdgomezdiez.superheroes.app.api.ApiService
 import com.ugdgomezdiez.superheroes.app.left
 import com.ugdgomezdiez.superheroes.app.right
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
-import com.ugdgomezdiez.superheroes.domain.SuperHeroeModel
 import com.ugdgomezdiez.superheroes.domain.SuperHeroeRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiRemoteDataSource: SuperHeroeRepository {
+class SuperHeroeRemoteDataSource: SuperHeroeRepository {
     private val apiClient: ApiClient= ApiClient()
     override suspend fun findSuperHeroe(): Either<ErrorApp, List<SuperHeroe>> {
 

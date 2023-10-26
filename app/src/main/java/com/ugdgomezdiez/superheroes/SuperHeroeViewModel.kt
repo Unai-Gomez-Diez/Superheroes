@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ugdgomezdiez.superheroes.app.ErrorApp
-import com.ugdgomezdiez.superheroes.data.remote.ApiRemoteDataSource
+import com.ugdgomezdiez.superheroes.data.remote.BiographyRemoteDataSource
+import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeRemoteDataSource
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SuperHeroeViewModel(private val apiRemoteDataSource: ApiRemoteDataSource): ViewModel(){
+class SuperHeroeViewModel(private val apiRemoteDataSource: BiographyRemoteDataSource): ViewModel(){
     private val _uiModel = MutableLiveData<UiModel>()
     val uiModel: LiveData<UiModel> = _uiModel
 
@@ -21,7 +21,7 @@ class SuperHeroeViewModel(private val apiRemoteDataSource: ApiRemoteDataSource):
         viewModelScope.launch(Dispatchers.IO) {
 
 
-            println(apiRemoteDataSource.findSuperHeroe())
+            println(apiRemoteDataSource.findBiography(2))
         }
     }
 

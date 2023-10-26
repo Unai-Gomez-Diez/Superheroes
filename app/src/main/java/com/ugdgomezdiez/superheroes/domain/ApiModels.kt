@@ -35,3 +35,11 @@ class SuperHeroeModel(
         @SerializedName("lg")val lg: String
     )
 }
+class BiographyModel(
+    @SerializedName("fullName")val fullName: String,
+    @SerializedName("alterEgos")val alterEgos: String,
+    @SerializedName("aliases")val aliases:List<String>,
+    @SerializedName("placeOfBirth")val placeOfBirth: String,
+    @SerializedName("publisher")val publisher: String,
+    @SerializedName("aligment")val alignment: String
+)

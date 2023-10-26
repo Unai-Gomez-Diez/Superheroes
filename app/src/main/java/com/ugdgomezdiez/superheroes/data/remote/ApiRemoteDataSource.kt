@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiRemoteDataSource: SuperHeroeRepository {
     private val apiClient: ApiClient= ApiClient()
-    override suspend fun findSuperHeroe(): Either<ErrorApp, SuperHeroe> {
+    override suspend fun findSuperHeroe(): Either<ErrorApp, List<SuperHeroe>> {
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -35,10 +35,13 @@ class ApiRemoteDataSource: SuperHeroeRepository {
         var apiService: ApiService = retrofit.create(ApiService::class.java)
 
         return try{
-            val response:Response<List<SuperHeroeModel>> = apiClient.apiService.getHeroes()
+            val response= apiService.getHeroes()
             return if (response.isSuccessful){
                 //Listado
-                response.body()!!.toModel().right()
+                val heroes = response.body()!!.map {
+                    it.toModel()
+                }
+                return heroes.right()
             }else{
                 ErrorApp.UnknowError.left()
             }

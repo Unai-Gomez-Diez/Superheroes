@@ -47,4 +47,8 @@ class SuperHeroeRemoteDataSource: SuperHeroeRepository {
             ErrorApp.UnknowError.left()
         }
     }
+
+
+
+
 }

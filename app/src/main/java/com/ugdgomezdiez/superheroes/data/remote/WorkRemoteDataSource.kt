@@ -2,6 +2,7 @@ package com.ugdgomezdiez.superheroes.data.remote
 
 import com.ugdgomezdiez.superheroes.app.Either
 import com.ugdgomezdiez.superheroes.app.ErrorApp
+import com.ugdgomezdiez.superheroes.app.api.ApiClient
 import com.ugdgomezdiez.superheroes.app.api.ApiService
 import com.ugdgomezdiez.superheroes.app.left
 import com.ugdgomezdiez.superheroes.app.right
@@ -12,24 +13,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class WorkRemoteDataSource: WorkRepository {
+class WorkRemoteDataSource(private val apiClient: ApiClient): WorkRepository {
     override suspend fun findWork(id: Int): Either<ErrorApp, Work> {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client: OkHttpClient = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-
-        var retrofit = Retrofit.Builder()
-            .baseUrl("https://dam.sitehub.es/api-curso/superheroes/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-
-        var apiService: ApiService = retrofit.create(ApiService::class.java)
         return try{
-            val response=  apiService.getWork(id)
+            val response=  apiClient.apiService.getWork(id)
             return if(response.isSuccessful){
                 response.body()!!.toModel().right()
             }else{

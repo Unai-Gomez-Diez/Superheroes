@@ -1,11 +1,8 @@
 package com.ugdgomezdiez.superheroes.data.remote
 
 import com.ugdgomezdiez.superheroes.domain.Biography
-import com.ugdgomezdiez.superheroes.domain.BiographyModel
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
-import com.ugdgomezdiez.superheroes.domain.SuperHeroeModel
 import com.ugdgomezdiez.superheroes.domain.Work
-import com.ugdgomezdiez.superheroes.domain.WorkModel
 
 fun SuperHeroeModel.toModel(): SuperHeroe=
     SuperHeroe(this.id,this.name,this.slug,this.powerStats.toModel(),this.appearance.toModel(),this.images.toModel())

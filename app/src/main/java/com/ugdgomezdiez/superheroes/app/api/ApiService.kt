@@ -1,9 +1,8 @@
 package com.ugdgomezdiez.superheroes.app.api
 
-import com.ugdgomezdiez.superheroes.domain.BiographyModel
-import com.ugdgomezdiez.superheroes.domain.SuperHeroeModel
-import com.ugdgomezdiez.superheroes.domain.WorkModel
-import retrofit2.Call
+import com.ugdgomezdiez.superheroes.data.remote.BiographyModel
+import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeModel
+import com.ugdgomezdiez.superheroes.data.remote.WorkModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

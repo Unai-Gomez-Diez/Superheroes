@@ -13,7 +13,7 @@ class SuperHeroViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         binding = ViewSuperheroItemBinding.bind(view)
 
         binding.apply {
-            image.loadUrl
+            image.loadUrl(model.image)
         }
     }
 }

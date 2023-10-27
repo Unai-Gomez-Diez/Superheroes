@@ -14,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class SuperHeroeRemoteDataSource(private val apiClient: ApiClient): SuperHeroeRepository {
-
     override suspend fun findSuperHeroe(): Either<ErrorApp, List<SuperHeroe>> {
          return try{
             val response= apiClient.apiService.getHeroes()

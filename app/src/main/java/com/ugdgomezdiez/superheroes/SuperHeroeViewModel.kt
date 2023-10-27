@@ -21,19 +21,13 @@ class SuperHeroeViewModel(
     ): ViewModel(){
     private val _uiModel = MutableLiveData<UiModel>()
     val uiModel: LiveData<UiModel> = _uiModel
-
     fun loadSuperHeroe(){
         _uiModel.value = UiModel(isLoading = true)
-
         viewModelScope.launch(Dispatchers.IO) {
-
-
             println(biographyRemoteDataSource.findBiography(1))
             println(workRemoteDataSource.findWork(1))
         }
     }
-
-
     data class UiModel(
         val isLoading: Boolean= false,
         val errorApp: ErrorApp?=null,

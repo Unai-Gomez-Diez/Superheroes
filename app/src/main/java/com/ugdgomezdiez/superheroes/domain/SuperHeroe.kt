@@ -16,7 +16,6 @@ data class SuperHeroe(
         val power: Int,
         val combat: Int
     )
-
     data class Appearance(
         val gender: String,
         val race: String?,
@@ -25,7 +24,6 @@ data class SuperHeroe(
         val eyeColor: String,
         val hairColor: String
     )
-
     data class Images(
         val xs: String,
         val sm: String,

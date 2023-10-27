@@ -15,7 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class BiographyRemoteDataSource(private val apiClient: ApiClient):BiographyRepository {
     override suspend fun findBiography(id: Int): Either<ErrorApp, Biography> {
-
         return try {
             val response = apiClient.apiService.getBiography(id)
             return if(response.isSuccessful){
@@ -27,5 +26,4 @@ class BiographyRemoteDataSource(private val apiClient: ApiClient):BiographyRepos
             ErrorApp.UnknowError.left()
         }
     }
-
 }

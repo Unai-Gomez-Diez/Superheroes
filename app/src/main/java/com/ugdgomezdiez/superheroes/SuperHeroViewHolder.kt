@@ -10,12 +10,15 @@ class SuperHeroViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
     private lateinit var binding: ViewSuperheroItemBinding
 
-    fun bind(model: SuperHeroe){
+    fun bind(model: SuperHeroe, onClick:(Int)->Unit){
         binding = ViewSuperheroItemBinding.bind(view)
 
         binding.apply {
             image.setUrl(model.image.sm)
             name.text=model.name
+        }
+        view.setOnClickListener {
+            onClick.invoke(model.id)
         }
     }
 }

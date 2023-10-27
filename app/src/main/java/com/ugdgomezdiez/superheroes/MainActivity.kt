@@ -17,7 +17,7 @@ import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityMainBinding
-    lateinit var binding2:ActivityHeroBinding
+
 
     private val superHeroAdapter = SuperHeroAdapter()
 
@@ -36,12 +36,7 @@ class MainActivity : AppCompatActivity() {
         setupObservers()
         viewModel.loadSuperHeroe()
 
-        val layout = findViewById<View>(R.id.list)
 
-        layout.setOnClickListener {
-            val intent = Intent(this, setupBinding2()::class.java)
-            startActivity(intent)
-        }
 
     }
 
@@ -50,10 +45,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun setupBinding2(){
-        binding2 = ActivityHeroBinding.inflate(layoutInflater)
-        setContentView(binding2.root)
-    }
+
 
     private fun setupView(){
         binding.apply {
@@ -63,23 +55,15 @@ class MainActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+                superHeroAdapter.setEvent {
+                    navigateToDetail(it)
+                }
                 list.adapter = superHeroAdapter
             }
         }
     }
 
-    private fun setupView2(){
-        binding2.apply {
-            listImage.apply {
-                listImage.layoutManager = LinearLayoutManager(
-                    this@MainActivity,
-                    LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-                listImage.adapter = superHeroAdapter
-            }
-        }
-    }
+
     private fun setupObservers(){
         val observer=Observer<SuperHeroeViewModel.UiModel>{
             it.superHeroe?.let {
@@ -90,6 +74,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bind(superHeroe:List<SuperHeroe>){
-        superHeroAdapter.setDataList(superHeroe)
+        superHeroAdapter.submitList(superHeroe)
+    }
+    private fun navigateToDetail(heroId: Int){
+        val intent = Intent(this,SuperHeroeDetailActivity::class.java)
+        intent.putExtra(SuperHeroeDetailActivity.HERO_ID_PARAM,heroId)
+        startActivity(intent)
     }
 }

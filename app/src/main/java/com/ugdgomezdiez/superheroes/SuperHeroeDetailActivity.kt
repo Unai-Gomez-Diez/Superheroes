@@ -3,6 +3,7 @@ package com.ugdgomezdiez.superheroes
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ugdgomezdiez.superheroes.app.extensions.setUrl
 import com.ugdgomezdiez.superheroes.databinding.ActivityHeroBinding
 import com.ugdgomezdiez.superheroes.domain.Biography
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
@@ -23,7 +24,8 @@ class SuperHeroeDetailActivity: AppCompatActivity() {
     private fun bindData(work: Work, biography: Biography, superHeroe: SuperHeroe){
         binding.apply {
             nombreHeroe.text=superHeroe.name
-
+            imagenPrin.setUrl(superHeroe.image.sm)
+            buenomalo.text=biography.alignment
         }
     }
 }

@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         layout.setOnClickListener {
             val intent = Intent(this, setupBinding2()::class.java)
+            startActivity(intent)
         }
 
     }
@@ -69,13 +70,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView2(){
         binding2.apply {
-            list.apply {
-                list.layoutManager = LinearLayoutManager(
+            listImage.apply {
+                listImage.layoutManager = LinearLayoutManager(
                     this@MainActivity,
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                list.adapter = superHeroAdapter
+                listImage.adapter = superHeroAdapter
             }
         }
     }

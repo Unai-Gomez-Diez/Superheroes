@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 
-class SuperHeroAdapter: RecyclerView.Adapter<SuperHeroViewHolder>() {
+class SuperHeroImageAdapter: RecyclerView.Adapter<SuperHeroImageViewHolder>()  {
     private val dataList: MutableList<SuperHeroe> = mutableListOf()
     fun setDataList(superHeroes: List<SuperHeroe>){
         dataList.clear()
@@ -15,14 +15,12 @@ class SuperHeroAdapter: RecyclerView.Adapter<SuperHeroViewHolder>() {
         dataList.addAll(superHeroes)
         notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_superhero_item, parent,false)
-        return SuperHeroViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroImageViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_heroimage_item, parent,false)
+        return SuperHeroImageViewHolder(view)
     }
-    override fun getItemCount(): Int =dataList.size
-    override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
-        val item = dataList[position]
-        holder.bind(item)
-
+    override fun getItemCount(): Int =3
+    override fun onBindViewHolder(holder: SuperHeroImageViewHolder, position: Int) {
+        holder.bind(dataList[position])
     }
 }

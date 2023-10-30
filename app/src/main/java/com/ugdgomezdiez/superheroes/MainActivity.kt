@@ -3,16 +3,14 @@ package com.ugdgomezdiez.superheroes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ugdgomezdiez.superheroes.data.remote.BiographyRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.WorkRemoteDataSource
-import com.ugdgomezdiez.superheroes.databinding.ActivityHeroBinding
 import com.ugdgomezdiez.superheroes.databinding.ActivityMainBinding
-import com.ugdgomezdiez.superheroes.domain.GetSuperHeroeUseCase
-import com.ugdgomezdiez.superheroes.domain.SuperHeroe
+import com.ugdgomezdiez.superheroes.domain.GetSuperHeroeListUseCase
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             BiographyRemoteDataSource(),
             WorkRemoteDataSource(),
             SuperHeroeRemoteDataSource(),
-            GetSuperHeroeUseCase(SuperHeroeRemoteDataSource())
+            GetSuperHeroeListUseCase(SuperHeroeRemoteDataSource())
         )
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,15 +64,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers(){
         val observer=Observer<SuperHeroeViewModel.UiModel>{
-            it.superHeroe?.let {
+            it.superHeroeList?.let {
                 bind(it)
             }
         }
         viewModel.uiModel.observe(this,observer)
     }
 
-    private fun bind(superHeroe:List<SuperHeroe>){
-        superHeroAdapter.submitList(superHeroe)
+    private fun bind(superHeroeList:List<SuperHeroeList>){
+        superHeroAdapter.submitList(superHeroeList)
     }
     private fun navigateToDetail(heroId: Int){
         val intent = Intent(this,SuperHeroeDetailActivity::class.java)

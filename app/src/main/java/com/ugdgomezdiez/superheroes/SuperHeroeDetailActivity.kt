@@ -2,11 +2,10 @@ package com.ugdgomezdiez.superheroes
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ugdgomezdiez.superheroes.app.extensions.setUrl
 import com.ugdgomezdiez.superheroes.databinding.ActivityHeroBinding
 import com.ugdgomezdiez.superheroes.domain.Biography
-import com.ugdgomezdiez.superheroes.domain.SuperHeroe
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 import com.ugdgomezdiez.superheroes.domain.Work
 
 class SuperHeroeDetailActivity: AppCompatActivity() {
@@ -21,10 +20,10 @@ class SuperHeroeDetailActivity: AppCompatActivity() {
         companion object {
         val HERO_ID_PARAM = "KEY_HERO_ID"
     }
-    private fun bindData(work: Work, biography: Biography, superHeroe: SuperHeroe){
+    private fun bindData(work: Work, biography: Biography, superHeroeList: SuperHeroeList){
         binding.apply {
-            nombreHeroe.text=superHeroe.name
-            imagenPrin.setUrl(superHeroe.image.sm)
+            nombreHeroe.text=superHeroeList.name
+            imagenPrin.setUrl(superHeroeList.image.sm)
             buenomalo.text=biography.alignment
         }
     }

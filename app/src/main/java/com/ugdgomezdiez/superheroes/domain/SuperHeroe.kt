@@ -1,6 +1,6 @@
 package com.ugdgomezdiez.superheroes.domain
 
-data class SuperHeroe(
+data class SuperHeroeList(
     val id:Int,
     val name: String,
     val slug: String? = null,
@@ -33,3 +33,9 @@ data class SuperHeroe(
         val lg: String
     )
 }
+    data class SuperHeroe(
+        val superHeroeList: SuperHeroeList,
+        val work: Work,
+        val biography: Biography
+    )
+

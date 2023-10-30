@@ -3,10 +3,9 @@ package com.ugdgomezdiez.superheroes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.ugdgomezdiez.superheroes.domain.SuperHeroe
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 
-class SuperHeroAdapter: ListAdapter<SuperHeroe, SuperHeroViewHolder>(SuperHeroDiffUtil()) {
+class SuperHeroAdapter: ListAdapter<SuperHeroeList, SuperHeroViewHolder>(SuperHeroDiffUtil()) {
     lateinit var onClick:(heroId: Int)->Unit
     fun setEvent(onClick: (Int)->Unit){
         this.onClick=onClick

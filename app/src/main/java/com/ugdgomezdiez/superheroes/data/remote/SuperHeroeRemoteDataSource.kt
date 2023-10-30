@@ -6,7 +6,7 @@ import com.ugdgomezdiez.superheroes.app.api.ApiClient
 import com.ugdgomezdiez.superheroes.app.api.ApiService
 import com.ugdgomezdiez.superheroes.app.left
 import com.ugdgomezdiez.superheroes.app.right
-import com.ugdgomezdiez.superheroes.domain.SuperHeroe
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 import com.ugdgomezdiez.superheroes.domain.SuperHeroeRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SuperHeroeRemoteDataSource: SuperHeroeRepository {
     private val apiClient: ApiClient= ApiClient()
-    override suspend fun findSuperHeroe(): Either<ErrorApp, List<SuperHeroe>> {
+    override suspend fun findSuperHeroeList(): Either<ErrorApp, List<SuperHeroeList>> {
 
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY

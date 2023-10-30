@@ -3,16 +3,16 @@ package com.ugdgomezdiez.superheroes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ugdgomezdiez.superheroes.domain.SuperHeroe
+import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 
 class SuperHeroImageAdapter: RecyclerView.Adapter<SuperHeroImageViewHolder>()  {
-    private val dataList: MutableList<SuperHeroe> = mutableListOf()
-    fun setDataList(superHeroes: List<SuperHeroe>){
+    private val dataList: MutableList<SuperHeroeList> = mutableListOf()
+    fun setDataList(superHeroLists: List<SuperHeroeList>){
         dataList.clear()
-        addDataList(superHeroes)
+        addDataList(superHeroLists)
     }
-    fun addDataList(superHeroes: List<SuperHeroe>){
-        dataList.addAll(superHeroes)
+    fun addDataList(superHeroLists: List<SuperHeroeList>){
+        dataList.addAll(superHeroLists)
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroImageViewHolder {

@@ -3,20 +3,18 @@ package com.ugdgomezdiez.superheroes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ugdgomezdiez.superheroes.data.remote.BiographyRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.WorkRemoteDataSource
-import com.ugdgomezdiez.superheroes.databinding.ActivityHeroBinding
-import com.ugdgomezdiez.superheroes.databinding.ActivityMainBinding
+import com.ugdgomezdiez.superheroes.databinding.FragmentMainBinding
 import com.ugdgomezdiez.superheroes.domain.GetSuperHeroeUseCase
 import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding: FragmentMainBinding
 
 
     private val superHeroAdapter = SuperHeroAdapter()
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBinding(){
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = FragmentMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 

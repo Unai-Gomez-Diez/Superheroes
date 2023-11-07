@@ -19,7 +19,7 @@
             android:name=".SuperHeroeDetailActivity"
             android:exported="true"/>
         <activity
-            android:name=".SuperHeroActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,6 +6,7 @@ import com.ugdgomezdiez.superheroes.app.api.ApiClient
 import com.ugdgomezdiez.superheroes.app.api.ApiService
 import com.ugdgomezdiez.superheroes.app.left
 import com.ugdgomezdiez.superheroes.app.right
+import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
 import com.ugdgomezdiez.superheroes.domain.SuperHeroeRepository
 import okhttp3.OkHttpClient
@@ -48,7 +49,15 @@ class SuperHeroeRemoteDataSource: SuperHeroeRepository {
         }
     }
 
+    override suspend fun findSuperHeroe(id: Int): Either<ErrorApp, SuperHeroeList> {
+        return try {
+            val response= apiClient.apiService.getHeroe(id).body()!!
+            response.toModel().right()
 
+        }catch (e: Exception){
+            ErrorApp.UnknowError.left()
+        }
+    }
 
 
 }

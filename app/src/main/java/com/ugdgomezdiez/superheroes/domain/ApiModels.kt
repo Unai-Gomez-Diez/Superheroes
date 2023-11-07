@@ -2,7 +2,7 @@ package com.ugdgomezdiez.superheroes.domain
 
 import com.google.gson.annotations.SerializedName
 
-class SuperHeroeModel(
+class SuperHeroeListModel(
     @SerializedName("id") val id:Int,
     @SerializedName("name")val name:String,
     @SerializedName("slug")val slug: String? = null,
@@ -48,3 +48,4 @@ class WorkModel(
     @SerializedName("occupation")val occupation: String,
     @SerializedName("base")val base:String
 )
+

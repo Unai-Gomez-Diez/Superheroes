@@ -10,8 +10,7 @@ import com.ugdgomezdiez.superheroes.data.remote.SuperHeroeRemoteDataSource
 import com.ugdgomezdiez.superheroes.data.remote.WorkRemoteDataSource
 import com.ugdgomezdiez.superheroes.databinding.ActivityMainBinding
 import com.ugdgomezdiez.superheroes.domain.GetSuperHeroeListUseCase
-import com.ugdgomezdiez.superheroes.domain.SuperHeroeList
-
+import com.ugdgomezdiez.superheroes.domain.SuperHeroe
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding:ActivityMainBinding
@@ -21,10 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: SuperHeroeViewModel by lazy {
         SuperHeroeViewModel(
-            BiographyRemoteDataSource(),
-            WorkRemoteDataSource(),
-            SuperHeroeRemoteDataSource(),
-            GetSuperHeroeListUseCase(SuperHeroeRemoteDataSource())
+            GetSuperHeroeListUseCase(SuperHeroeRemoteDataSource(),
+                BiographyRemoteDataSource(),
+                WorkRemoteDataSource()
+                )
         )
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,15 +63,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers(){
         val observer=Observer<SuperHeroeViewModel.UiModel>{
-            it.superHeroeList?.let {
+            it.superHeroe?.let {
                 bind(it)
             }
         }
         viewModel.uiModel.observe(this,observer)
     }
 
-    private fun bind(superHeroeList:List<SuperHeroeList>){
-        superHeroAdapter.submitList(superHeroeList)
+    private fun bind(superHeroe:List<SuperHeroe>){
+        superHeroAdapter.submitList(superHeroe)
     }
     private fun navigateToDetail(heroId: Int){
         val intent = Intent(this,SuperHeroeDetailActivity::class.java)

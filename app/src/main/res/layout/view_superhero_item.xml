@@ -24,6 +24,22 @@
         app:layout_constraintStart_toStartOf="@id/image"
         app:layout_constraintTop_toBottomOf="@id/image"
         tools:text="SuperMan"/>
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        tools:text="Descripcion SuperMan"
+        />
+    <TextView
+        android:id="@+id/trabajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/descripcion"
+        app:layout_constraintTop_toBottomOf="@id/descripcion"
+        tools:text="Trabajo SuperMan"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
